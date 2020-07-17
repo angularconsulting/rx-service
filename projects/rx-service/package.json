@@ -1,0 +1,26 @@
+{
+  "name": "rx-service",
+  "version": "0.0.3",
+  "description": "Simple RxJS BehaviorSubject wrapper that simplifies component communication in your applications",
+  "author": "Aliaksei Kuncevič",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kuncevic/rx-service.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kuncevic/rx-service/issues"
+  },
+  "homepage": "https://github.com/kuncevic/rx-service#readme",
+  "keywords": [
+    "reactive services",
+    "state management",
+    "component communication"
+  ],
+  "peerDependencies": {
+    "rxjs": "˜6.5.5"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  }
+}
