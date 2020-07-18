@@ -18,7 +18,7 @@
     "component communication"
   ],
   "peerDependencies": {
-    "rxjs": "˜6.5.5"
+    "rxjs": "^6.5.5"
   },
   "dependencies": {
     "tslib": "^2.0.0"
