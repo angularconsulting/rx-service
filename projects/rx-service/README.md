@@ -35,7 +35,7 @@ export class AppComponent {
     this.counter$ = service.state$.pipe(map((x) => x.value));
   }
 
-  update(value): void {
+  update(value: number): void {
     this.service.setState({ value: this.service.getState().value + value });
   }
 }
