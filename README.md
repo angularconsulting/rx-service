@@ -7,7 +7,7 @@ Simple RxJS BehaviorSubject wrapper that simplifies component communication in y
 ### service.ts
 ```
 import { Injectable } from '@angular/core';
-import { RxStore } from './rx-service';
+import { RxStore } from 'rx-service';
 
 interface Counter {
   value: number;
@@ -48,7 +48,7 @@ export class AppComponent {
 ```
 ## 🧞‍♂️ Install  
 ```
-yarn i rx-service
+yarn add rx-service
 ```
 or
 ```
