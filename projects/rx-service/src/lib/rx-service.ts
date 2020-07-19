@@ -11,7 +11,7 @@ export abstract class RxService<T> {
     return this.localState$.asObservable();
   }
 
-  public setState(state: T): void {
+  public setState(state: Partial<T>): void {
     this.localState$.next({ ...this.getState(), ...state });
   }
 
