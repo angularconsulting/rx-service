@@ -39,7 +39,7 @@ describe('RxService', () => {
     expect(service.getState().value).toEqual(1);
   });
 
-  it('should reset store to initial', () => {
+  it('should reset to initial', () => {
     service.reset();
     expect(service.getState().value).toEqual(0);
   });
