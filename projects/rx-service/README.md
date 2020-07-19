@@ -5,7 +5,7 @@ Simple RxJS BehaviorSubject wrapper that simplifies component communication in y
 ## 👨‍💻 Example
 
 ### service.ts
-```
+```  typescript
 import { Injectable } from '@angular/core';
 import { RxService } from 'rx-service';
 
@@ -28,7 +28,7 @@ export class CounterService extends RxService<Counter> {
 }
 ```
 ### component.ts
-```
+```  typescript
 export class AppComponent {
   counter$: Observable<number>;
   constructor(private service: CounterService) {
@@ -41,7 +41,7 @@ export class AppComponent {
 }
 ```
 ### template.html
-```
+``` html
 <button (click)="update(-1)">-1</button>
 <span class="value"> {{ counter$ | async }}</span>
 <button (click)="update(1)">+1</button>
