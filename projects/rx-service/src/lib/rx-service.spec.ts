@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { RxStore } from './rx-store';
+import { RxService } from './rx-service';
 
 interface Counter {
   value: number;
@@ -7,7 +7,7 @@ interface Counter {
 
 const initialState: Counter = { value: 0 };
 
-class CounterService extends RxStore<Counter> {
+class CounterService extends RxService<Counter> {
   constructor() {
     super(initialState);
   }
@@ -16,7 +16,7 @@ class CounterService extends RxStore<Counter> {
   }
 }
 
-describe('RxStore', () => {
+describe('RxService', () => {
   let service: CounterService;
 
   beforeEach(() => {

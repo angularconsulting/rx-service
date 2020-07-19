@@ -7,7 +7,7 @@ Simple RxJS BehaviorSubject wrapper that simplifies component communication in y
 ### service.ts
 ```
 import { Injectable } from '@angular/core';
-import { RxStore } from 'rx-service';
+import { RxService } from 'rx-service';
 
 interface Counter {
   value: number;
@@ -18,7 +18,7 @@ const initialState: Counter = { value: 0 };
 @Injectable({
   providedIn: 'root',
 })
-export class CounterService extends RxStore<Counter> {
+export class CounterService extends RxService<Counter> {
   constructor() {
     super(initialState);
   }
