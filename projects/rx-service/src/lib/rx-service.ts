@@ -11,8 +11,13 @@ export abstract class RxService<T> {
     return this.localState$.asObservable();
   }
 
-  public setState(state: Partial<T>): void {
-    this.localState$.next({ ...this.getState(), ...state });
+  public setState(state: ((old: T) => Partial<T>) | Partial<T>): void {
+    if (Object.prototype.toString.call(state) === '[object Function]') {
+      state = (state as (old: T) => Partial<T>)(this.getState());
+      this.localState$.next(state as T);
+    } else {
+      this.localState$.next({ ...this.getState(), ...state });
+    }
   }
 
   public getState(): T {

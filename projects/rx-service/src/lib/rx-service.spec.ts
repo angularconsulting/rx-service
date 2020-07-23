@@ -30,7 +30,7 @@ describe('RxService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should be return 0', () => {
+  it('should return 0', () => {
     expect(service.getState().value).toEqual(0);
   });
 
@@ -39,7 +39,13 @@ describe('RxService', () => {
     expect(service.getState().value).toEqual(1);
   });
 
+  it('should increase count to 1', () => {
+    service.setState((old) => ({ value: old.value + 1 }));
+    expect(service.getState().value).toEqual(1);
+  });
+
   it('should reset to initial', () => {
+    service.setState((old) => ({ value: old.value + 1 }));
     service.reset();
     expect(service.getState().value).toEqual(0);
   });
