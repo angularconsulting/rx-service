@@ -32,8 +32,4 @@ export abstract class RxService<T> {
   public getState(): T {
     return this.localState$.getValue();
   }
-
-  private isFunction(value: T): boolean {
-    return typeof value === 'function';
-  }
 }
