@@ -12,20 +12,13 @@ export abstract class RxService<T> {
   }
 
   public setState(state: ((prevState: T) => Partial<T>) | Partial<T>): void {
-    if (
-      typeof state === 'number' ||
-      typeof state === 'string' ||
-      typeof state === 'boolean' ||
-      typeof state === 'bigint' ||
-      state === null ||
-      state === undefined
-    ) {
-      this.localState$.next(state);
+    if (typeof state === 'object') {
+      this.localState$.next({ ...this.getState(), ...state });
     } else if (typeof state === 'function') {
       state = (state as (prevState: T) => Partial<T>)(this.getState());
       this.localState$.next(state as T);
     } else {
-      this.localState$.next({ ...this.getState(), ...state });
+      this.localState$.next(state);
     }
   }
 
