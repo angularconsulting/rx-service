@@ -11,7 +11,7 @@ export abstract class RxService<T> {
     return this.localState$.asObservable();
   }
 
-  public setState(state: ((old: T) => Partial<T>) | Partial<T>): void {
+  public setState(state: ((prevState: T) => Partial<T>) | Partial<T>): void {
     if (
       typeof state === 'number' ||
       typeof state === 'string' ||
@@ -22,7 +22,7 @@ export abstract class RxService<T> {
     ) {
       this.localState$.next(state);
     } else if (typeof state === 'function') {
-      state = (state as (old: T) => Partial<T>)(this.getState());
+      state = (state as (prevState: T) => Partial<T>)(this.getState());
       this.localState$.next(state as T);
     } else {
       this.localState$.next({ ...this.getState(), ...state });
