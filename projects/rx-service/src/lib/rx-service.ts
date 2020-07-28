@@ -1,6 +1,6 @@
 import { BehaviorSubject, Observable } from 'rxjs';
 
-export abstract class RxService<T extends object> {
+export abstract class RxService<T> {
   private localState$: BehaviorSubject<T>;
 
   protected constructor(defaults: T) {
@@ -12,7 +12,16 @@ export abstract class RxService<T extends object> {
   }
 
   public setState(state: ((old: T) => Partial<T>) | Partial<T>): void {
-    if (Object.prototype.toString.call(state) === '[object Function]') {
+    if (
+      typeof state === 'number' ||
+      typeof state === 'string' ||
+      typeof state === 'boolean' ||
+      typeof state === 'bigint' ||
+      state === null ||
+      state === undefined
+    ) {
+      this.localState$.next(state);
+    } else if (typeof state === 'function') {
       state = (state as (old: T) => Partial<T>)(this.getState());
       this.localState$.next(state as T);
     } else {
@@ -22,5 +31,9 @@ export abstract class RxService<T extends object> {
 
   public getState(): T {
     return this.localState$.getValue();
+  }
+
+  private isFunction(value: T): boolean {
+    return typeof value === 'function';
   }
 }
