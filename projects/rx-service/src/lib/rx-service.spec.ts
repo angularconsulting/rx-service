@@ -35,13 +35,14 @@ describe('RxService', () => {
   });
 
   it('should increase count to 1', () => {
-    service.setState({ value: service.getState().value + 1 });
+    const state = service.getState();
+    service.setState({ value: state.value  + 1 });
     expect(service.getState().value).toEqual(1);
   });
 
-  it('should increase count to 1', () => {
-    service.setState((old) => ({ value: old.value + 1 }));
-    expect(service.getState().value).toEqual(1);
+  it('should increase count to 2', () => {
+    service.setState((old) => ({ value: old.value + 2 }));
+    expect(service.getState().value).toEqual(2);
   });
 
   it('should reset to initial', () => {
