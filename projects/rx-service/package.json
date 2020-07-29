@@ -1,6 +1,6 @@
 {
   "name": "rx-service",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Simple RxJS BehaviorSubject wrapper that simplifies component communication in your applications",
   "author": "Aliaksei Kuncevič",
   "license": "MIT",
