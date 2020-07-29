@@ -1,4 +1,5 @@
 import { BehaviorSubject, Observable } from 'rxjs';
+import { isFunction, isObject } from './utils';
 
 export abstract class RxService<T> {
   private localState$: BehaviorSubject<T>;
@@ -12,9 +13,9 @@ export abstract class RxService<T> {
   }
 
   public setState(state: ((prevState: T) => Partial<T>) | Partial<T>): void {
-    if (typeof state === 'object') {
+    if (isObject(state)) {
       this.localState$.next({ ...this.getState(), ...state });
-    } else if (typeof state === 'function') {
+    } else if (isFunction(state)) {
       state = (state as (prevState: T) => Partial<T>)(this.getState());
       this.localState$.next(state as T);
     } else {
