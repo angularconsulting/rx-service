@@ -11,9 +11,6 @@ class CounterService extends RxService<Counter> {
   constructor() {
     super(initialState);
   }
-  reset(): void {
-    this.setState(initialState);
-  }
 }
 
 describe('RxService', () => {
@@ -35,18 +32,19 @@ describe('RxService', () => {
   });
 
   it('should increase count to 1', () => {
-    const state = service.getState();
-    service.setState({ value: state.value  + 1 });
+    service.setState((old) => ({ value: old.value + 1 }));
     expect(service.getState().value).toEqual(1);
-  });
-
-  it('should increase count to 2 (shortcut)', () => {
-    service.setState((old) => ({ value: old.value + 2 }));
-    expect(service.getState().value).toEqual(2);
   });
 
   it('should reset to initial', () => {
     service.setState((old) => ({ value: old.value + 1 }));
+    service.reset();
+    expect(service.getState().value).toEqual(0);
+  });
+
+  it('should reset count', () => {
+    const state = service.getState();
+    service.setState({ value: state.value  + 1 });
     service.reset();
     expect(service.getState().value).toEqual(0);
   });
@@ -55,9 +53,6 @@ describe('RxService', () => {
 class PrimitiveService extends RxService<number> {
   constructor() {
     super(0);
-  }
-  reset(): void {
-    this.setState(0);
   }
 }
 
@@ -87,6 +82,13 @@ describe('Primitive RxService', () => {
 
   it('should reset to initial', () => {
     service.setState(1);
+    service.reset();
+    expect(service.getState()).toEqual(0);
+  });
+
+  it('should reset count', () => {
+    const state = service.getState();
+    service.setState(state + 1);
     service.reset();
     expect(service.getState()).toEqual(0);
   });
