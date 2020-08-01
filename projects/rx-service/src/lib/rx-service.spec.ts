@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { patch } from './patch';
 import { RxService } from './rx-service';
 
 interface Counter {
@@ -91,5 +92,39 @@ describe('Primitive RxService', () => {
     service.setState(state + 1);
     service.reset();
     expect(service.getState()).toEqual(0);
+  });
+});
+
+interface HelloWorld {
+  a: number;
+  b: number;
+}
+
+class OperatorsService extends RxService<HelloWorld> {
+  constructor() {
+    super({ a: 0, b: 0 });
+  }
+}
+
+describe('RxService', () => {
+  let service: OperatorsService;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [{ provide: OperatorsService }],
+    });
+    service = TestBed.inject(OperatorsService);
+  });
+
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
+
+  it('should increase count to 1', () => {
+    const state = service.getState();
+    expect(state).toEqual({a: 0, b: 0});
+    service.setState(patch({ a: 1 }));
+    expect(service.getState()).toEqual({ a: 1, b: 0 });
+    console.log(service.getState());
   });
 });

@@ -1,5 +1,5 @@
 import { BehaviorSubject, Observable } from 'rxjs';
-import { isFunction } from './utils';
+import { isStateOperator, MyStateOperator } from './patch';
 
 export abstract class RxService<T> {
   private localState$: BehaviorSubject<T>;
@@ -14,12 +14,12 @@ export abstract class RxService<T> {
     return this.localState$.asObservable();
   }
 
-  public setState(state: ((prevState: T) => Partial<T>) | Partial<T>): void {
-    if (isFunction(state)) {
-      state = (state as (prevState: T) => Partial<T>)(this.getState());
-      this.localState$.next(state as T);
-    } else {
+  public setState(stateOrOperator: T | MyStateOperator<T>): void {
+    if (isStateOperator(stateOrOperator)) {
+      const state = stateOrOperator(this.getState());
       this.localState$.next(state);
+    } else {
+      this.localState$.next(stateOrOperator);
     }
   }
 
