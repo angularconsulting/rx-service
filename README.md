@@ -22,9 +22,6 @@ export class CounterService extends RxService<Counter> {
   constructor() {
     super(initialState);
   }
-  reset(): void {
-    this.setState(initialState);
-  }
 }
 ```
 ### component.ts
@@ -36,7 +33,7 @@ export class AppComponent {
   }
 
   update(value: number): void {
-    this.service.setState({ value: this.service.getState().value + value });
+    this.service.setState((old) => ({ value: old.value + value }));
   }
 }
 ```
@@ -46,11 +43,23 @@ export class AppComponent {
 <span class="value"> {{ counter$ | async }}</span>
 <button (click)="update(1)">+1</button>
 ```
+
+## 💡 Also you can just use primitives 
+```  typescript
+const initialState = 0;
+
+export class CounterService extends RxService<number> {
+  constructor() {
+    super(initialState);
+  }
+}
+```
+
 ## 🧞‍♂️ Install  
 ```
 yarn add rx-service
 ```
 or
 ```
-npm i rx-service`
+npm i rx-service
 ```
