@@ -1,6 +1,6 @@
 # 🔥 RxService
 
-Simple RxJS BehaviorSubject wrapper that simplifies component communication in your applications 🐱‍🚀
+ Power up your application services to simplify component communication scenarios. This is a simple solution that rely on RxJS BehaviorSubject 🐱‍🚀
 
 ## 👨‍💻 Example
 
