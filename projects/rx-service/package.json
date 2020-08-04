@@ -13,9 +13,11 @@
   },
   "homepage": "https://github.com/kuncevic/rx-service#readme",
   "keywords": [
-    "reactive services",
-    "state management",
-    "component communication"
+    "reactive-services",
+    "state-management",
+    "component-communication",
+    "rxjs",
+    "services"
   ],
   "peerDependencies": {
     "rxjs": "^6.5.5"
