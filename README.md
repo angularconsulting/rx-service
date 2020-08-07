@@ -42,7 +42,7 @@ export class AppComponent implements OnInit {
   constructor(private service: CounterService) {}
 
    ngOnInit(): void {
-    this.counter$ = service.state$.pipe(map((x) => x.value));
+    this.counter$ = this.service.state$.pipe(map((x) => x.value));
   }
 
   update(value: number): void {
