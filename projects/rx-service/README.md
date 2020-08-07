@@ -1,10 +1,10 @@
 # 🔥 RxService
 
- Power up your application services to simplify component communication scenarios. This is a simple solution that rely on RxJS BehaviorSubject 🐱‍🚀
+ 💪RxService adds reactivity to service classes and simplifying component communication scenarios within your application. This is a simple solution that based on RxJS BehaviorSubject 🐱‍🚀
 
 ## 👨‍💻 Example
 
-### service.ts
+### service
 ```  typescript
 import { Injectable } from '@angular/core';
 import { RxService } from 'rx-service';
@@ -24,8 +24,19 @@ export class CounterService extends RxService<Counter> {
   }
 }
 ```
-### component.ts
+### component class
 ```  typescript
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { CounterService } from './counter.service';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
 export class AppComponent {
   counter$: Observable<number>;
   constructor(private service: CounterService) {
@@ -33,11 +44,11 @@ export class AppComponent {
   }
 
   update(value: number): void {
-    this.service.setState((old) => ({ value: old.value + value }));
+    this.service.setState((state) => ({ value: state.value + value }));
   }
 }
 ```
-### template.html
+### component template
 ``` html
 <button (click)="update(-1)">-1</button>
 <span class="value"> {{ counter$ | async }}</span>
