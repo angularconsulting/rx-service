@@ -1,6 +1,6 @@
 # 🔥 RxService
 
- 💪 RxService adds reactivity to service classes and simplifying component communication scenarios within your application. This is a simple solution that based on RxJS BehaviorSubject 🐱‍🚀
+ RxService adds reactivity to service classes and simplifying component communication scenarios within your application. This is a simple solution that based on RxJS BehaviorSubject 🐱‍🚀
 
 ## 👨‍💻 Example
 
