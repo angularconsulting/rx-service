@@ -38,14 +38,14 @@ describe('RxService', () => {
 
   it('should reset to initial', () => {
     service.setState((old) => ({ value: old.value + 1 }));
-    service.reset();
+    service.resetState();
     expect(service.getState().value).toEqual(0);
   });
 
   it('should reset count', () => {
     const state = service.getState();
     service.setState({ value: state.value  + 1 });
-    service.reset();
+    service.resetState();
     expect(service.getState().value).toEqual(0);
   });
 });
@@ -82,14 +82,14 @@ describe('Primitive RxService', () => {
 
   it('should reset to initial', () => {
     service.setState(1);
-    service.reset();
+    service.resetState();
     expect(service.getState()).toEqual(0);
   });
 
   it('should reset count', () => {
     const state = service.getState();
     service.setState(state + 1);
-    service.reset();
+    service.resetState();
     expect(service.getState()).toEqual(0);
   });
 });
