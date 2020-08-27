@@ -27,7 +27,7 @@ export abstract class RxService<T> {
     return this.localState$.getValue();
   }
 
-  public reset(): void {
+  public resetState(): void {
     this.localState$.next(this.default);
   }
 }
