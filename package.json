@@ -1,6 +1,6 @@
 {
   "name": "rx-service",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -17,7 +17,7 @@
     "@angular/core": "^10.0.4",
     "@angular/platform-browser": "^10.0.4",
     "@angular/platform-browser-dynamic": "^10.0.4",
-    "rxjs": "^6.6.0"
+    "rxjs": "^6.6.7"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1000.2",
