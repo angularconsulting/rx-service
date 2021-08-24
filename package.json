@@ -8,22 +8,22 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "prepublish": "ng build --prod"
+    "prepublish": "ng build --configuration production"
   },
   "private": true,
   "dependencies": {
-    "@angular/common": "^12.0.0",
-    "@angular/compiler": "^12.0.0",
-    "@angular/core": "^12.0.0",
-    "@angular/platform-browser": "^12.0.0",
-    "@angular/platform-browser-dynamic": "^12.0.0",
+    "@angular/common": "^12.2.2",
+    "@angular/compiler": "^12.2.2",
+    "@angular/core": "^12.2.2",
+    "@angular/platform-browser": "^12.2.2",
+    "@angular/platform-browser-dynamic": "^12.2.2",
     "rxjs": "^6.6.7",
     "zone.js": "^0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~12.0.0",
-    "@angular/cli": "~12.0.0",
-    "@angular/compiler-cli": "~12.0.0",
+    "@angular-devkit/build-angular": "~12.2.2",
+    "@angular/cli": "~12.2.2",
+    "@angular/compiler-cli": "~12.2.2",
     "@types/jasmine": "~3.7.4",
     "@types/jasminewd2": "~2.0.9",
     "@types/node": "^15.0.3",
