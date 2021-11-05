@@ -1,6 +1,6 @@
 {
   "name": "rx-service",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Simple RxJS BehaviorSubject wrapper that simplifies component communication in your applications",
   "author": "Aliaksei Kuncevič",
   "license": "MIT",
@@ -20,9 +20,9 @@
     "services"
   ],
   "peerDependencies": {
-    "rxjs": "^6.6.7"
+    "rxjs": "^7.4.0"
   },
   "dependencies": {
-    "tslib": "^2.0.0"
+    "tslib": "^2.3.0"
   }
 }
