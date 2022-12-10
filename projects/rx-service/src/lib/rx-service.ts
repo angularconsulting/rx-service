@@ -1,7 +1,7 @@
 import { BehaviorSubject, Observable } from 'rxjs';
 import { isFunction } from './utils';
 
-export abstract class RxService<T> {
+export abstract class Rx<T> {
   private localState$: BehaviorSubject<T>;
   private default: T;
 

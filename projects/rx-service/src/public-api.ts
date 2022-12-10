@@ -3,4 +3,5 @@
  */
 
 export * from './lib/rx-service';
+export * from './lib/rx-cleanup';
 

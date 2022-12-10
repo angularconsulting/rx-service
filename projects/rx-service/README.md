@@ -1,13 +1,13 @@
-# 🔥 RxService
+# 🔥 Rx Service
 
- RxService adds reactivity to service classes and simplifying component communication scenarios within your application. This is a simple solution that based on RxJS BehaviorSubject 🐱‍🚀
+ Rx Service library adds reactivity to your services and simplifying component communication scenarios within your application. This is a simple solution that based on RxJS BehaviorSubject 🐱‍🚀
 
 ## 👨‍💻 Example
 
 ### service
 ```  typescript
 import { Injectable } from '@angular/core';
-import { RxService } from 'rx-service';
+import { Rx } from 'rx-service';
 
 interface Counter {
   value: number;
@@ -18,7 +18,7 @@ const initialState: Counter = { value: 0 };
 @Injectable({
   providedIn: 'root',
 })
-export class CounterService extends RxService<Counter> {
+export class CounterService extends Rx<Counter> {
   constructor() {
     super(initialState);
   }
@@ -61,9 +61,42 @@ export class AppComponent implements OnInit {
 ```  typescript
 const initialState = 0;
 
-export class CounterService extends RxService<number> {
+export class CounterService extends Rx<number> {
   constructor() {
     super(initialState);
+  }
+}
+```
+
+## 🧹 Clean up subscriptions in case not using the async pipe
+```  typescript
+
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { RxCleanup } from 'rx-service';
+import { takeUntil } from 'rxjs';
+import { CounterService } from './counter.service';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class AppComponent implements OnInit {
+  constructor(
+    private service: CounterService,
+    private readonly cleanup$: RxCleanup
+  ) {}
+
+  ngOnInit(): void {
+    this.service.state$
+      .pipe(
+        takeUntil(this.cleanup$)
+        // more operators here
+      )
+      .subscribe((result) => {
+        // more magic here
+      });
   }
 }
 ```

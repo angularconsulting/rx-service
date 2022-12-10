@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { RxService } from './rx-service';
+import { Rx } from './rx-service';
 
 interface Counter {
   value: number;
@@ -7,18 +7,18 @@ interface Counter {
 
 const initialState: Counter = { value: 0 };
 
-class CounterService extends RxService<Counter> {
+class CounterService extends Rx<Counter> {
   constructor() {
     super(initialState);
   }
 }
 
-describe('RxService', () => {
+describe('Rx (RxService)', () => {
   let service: CounterService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ { provide: CounterService } ],
+      providers: [{ provide: CounterService }],
     });
     service = TestBed.inject(CounterService);
   });
@@ -44,19 +44,19 @@ describe('RxService', () => {
 
   it('should reset count', () => {
     const state = service.getState();
-    service.setState({ value: state.value  + 1 });
+    service.setState({ value: state.value + 1 });
     service.resetState();
     expect(service.getState().value).toEqual(0);
   });
 });
 
-class PrimitiveService extends RxService<number> {
+class PrimitiveService extends Rx<number> {
   constructor() {
     super(0);
   }
 }
 
-describe('Primitive RxService', () => {
+describe('Rx (RxService)', () => {
   let service: PrimitiveService;
 
   beforeEach(() => {
