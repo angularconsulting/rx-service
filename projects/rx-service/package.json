@@ -20,7 +20,7 @@
     "services"
   ],
   "peerDependencies": {
-    "rxjs": "^7.4.0"
+    "rxjs": "^7.6.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
