@@ -38,7 +38,7 @@ import { CounterService } from './counter.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements OnInit {
-  counter$: Observable<number>;
+  counter$!: Observable<number>;
   constructor(private service: CounterService) {}
 
    ngOnInit(): void {
