@@ -1,6 +1,6 @@
 # 🔥 Rx Service
 
- Rx Service library adds reactivity to your services and simplifying component communication scenarios within your application. This is a simple solution that based on RxJS BehaviorSubject 🐱‍🚀
+Enhance your application services with Rx Service. This is a simple yet powerful library that adds reactivity and consistency to your services while streamlining component communication within your application using the reliable RxJS BehaviorSubject 🐱🦸‍♂️
 
 ## 👨‍💻 Example
 
@@ -59,6 +59,8 @@ export class AppComponent implements OnInit {
 
 ## 💡 Also you can just use primitives 
 ```  typescript
+import { Rx } from "rx-service";
+
 const initialState = 0;
 
 export class CounterService extends Rx<number> {
@@ -68,7 +70,7 @@ export class CounterService extends Rx<number> {
 }
 ```
 
-## 🧹 Clean up subscriptions in case not using the async pipe. 
+## 🧹 Clean up subscriptions for edge cases 
 ```  typescript
 
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
@@ -109,3 +111,4 @@ or
 ```
 npm i rx-service
 ```
+created by [angularconsulting.au](https://angularconsulting.au)
