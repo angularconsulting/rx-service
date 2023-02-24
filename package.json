@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "prepublish": "ng build --configuration production"
+    "prepublish": "ng build --configuration production && ts-node _post_build.ts"
   },
   "private": true,
   "dependencies": {

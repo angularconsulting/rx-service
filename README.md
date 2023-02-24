@@ -93,8 +93,8 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.service.state$
       .pipe(
-        takeUntil(this.cleanup$)
         // more operators here
+        takeUntil(this.cleanup$)
       )
       .subscribe((result) => {
         // more magic here
